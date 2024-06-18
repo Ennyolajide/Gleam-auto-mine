@@ -26,7 +26,7 @@ async function claimFarm(authQuery) {
 
 function logInfo(obj) {
     console.log(
-        'User:', chalk.green(obj?.username),
+        'User:', chalk.green(obj.username ?? `${obj?.first_name} ${obj?.last_name}`),
         '| Points:', chalk.yellow(obj?.points.toLocaleString())
     );
 }

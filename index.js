@@ -9,9 +9,9 @@ const authQuery = env.AUTH_QUERY;
 async function main() {
     axios.post(urls.auth, setPostData(authQuery), { headers: getHeaders() })
         .then((res) => {
-            const { username } = res.data;
-            username ? logInfo(res.data) : false;
-            username ? claimFarm(authQuery) : exitProcess();
+            const { username, project } = res.data;
+            (username || project) ? logInfo(res.data) : false;
+            (username || project) ? claimFarm(authQuery) : exitProcess();
         })
         .catch(error => {
             console.log(error);
